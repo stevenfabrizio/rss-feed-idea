@@ -1,0 +1,23 @@
+/*!*******************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styless.css ***!
+  \*******************************************************************/
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(20, 21, 43);
+}
+
+#root {
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto auto auto 4fr;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+  color: yellow;
+}
+
