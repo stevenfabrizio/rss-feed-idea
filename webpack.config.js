@@ -1,14 +1,29 @@
 const path = require('path');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-  plugins: [new MiniCssExtractPlugin()],
-  mode: 'development',
-  entry: './src/index.tsx',
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+      chunkFilename: '[id].css',
+      ignoreOrder: true,
+    }),
+  ],
+
+  entry: {
+    index: './src/index.tsx',
+  },
+
+  mode: 'production',
+  devtool: 'source-map',
+
+  // mode: 'development',
+  // devtool: 'inline-source-map',
+
   output: {
+    filename: '[name]bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
     clean: true,
   },
   module: {
@@ -19,8 +34,9 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        // use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(png|jpg|webp)$/,
@@ -28,6 +44,23 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin({
+        parallel: true,
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
+  },
+
   watch: true,
   resolve: {
     extensions: ['.tsx', '.js', '.ts'],
