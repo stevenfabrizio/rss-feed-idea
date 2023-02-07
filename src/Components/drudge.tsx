@@ -14,7 +14,7 @@ const Drudge: React.FC = () => {
     (async () => {
       const rss = await parse(drudgeReportFeed);
 
-      console.log(rss.items);
+      // console.log(rss.items);
 
       const tempTitles: any = [];
       const tempStoreLinks: any = [];

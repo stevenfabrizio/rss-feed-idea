@@ -4966,7 +4966,6 @@ const Drudge = () => {
     react.useEffect(() => {
         (() => __awaiter(void 0, void 0, void 0, function* () {
             const rss = yield parse(drudgeReportFeed);
-            console.log(rss.items);
             const tempTitles = [];
             const tempStoreLinks = [];
             for (let i = 0; i < rss.items.length; i++) {
@@ -4996,7 +4995,7 @@ var tass_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arg
 
 const { parse: tass_parse } = __webpack_require__(3264);
 const TASS = () => {
-    const tassFeed = 'https://feedpress.me/beatsme';
+    const tassFeed = 'https://cors-anywhere.herokuapp.com/http://tass.com/rss/v2.xml';
     const [storeTitles, setStoreTitles] = react.useState([]);
     const [storeLinks, setStoreLinks] = react.useState([]);
     react.useEffect(() => {

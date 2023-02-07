@@ -2,7 +2,7 @@ import React from 'react';
 const { parse } = require('rss-to-json');
 
 const TASS: React.FC = () => {
-  const tassFeed = 'https://feedpress.me/beatsme';
+  const tassFeed = 'https://cors-anywhere.herokuapp.com/http://tass.com/rss/v2.xml';
   // const chinaDigitalTimesFeed = 'http://chinadigitaltimes.net/feed'
   // const rss2JSONLink = 'https://rss2json.com/'
   // const chinaNewsServiceFeed = 'http://www.ecns.cn/rss/rss.xml'
